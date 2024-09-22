@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Especial</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #ffcccb, #ffe4b5, #add8e6, #d3cce3);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto; /* Permitir el desplazamiento vertical */
+            max-height: 100vh; /* Limitar la altura máxima */
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            color: #b84e8a;
+            margin-bottom: 50px;
+        }
+
+        #message, #finalMessage {
+            display: none;
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 20px;
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px;
+        }
+
+        button {
+            background-color: #b84e8a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e075af;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .heart, .star {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-300px); }
+            100% { transform: translateY(0); }
+        }
+
+        #countdown {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #exitButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1.2em;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #exitButton:hover {
+            background-color: #ff6091;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mensaje pa ti mi niña linda</h1>
+        <p>¿Cuál es el apodo que tengo para ti?</p>
+        <input type="text" id="nameInput" placeholder="Escribe tu apodo">
+        <button onclick="unlockMessage()">Ver Mensaje</button>
+
+        <div id="message">
+            <p id="specialMessage"></p>
+            <button id="enterButton" style="display: none;" onclick="showFinalMessage()">Enter</button>
+        </div>
+
+        <div id="finalMessage">
+            <p id="finalText"></p>
+            <div id="countdown"></div>
+            <button id="exitButton" onclick="exitPage()">Salir</button>
+        </div>
+    </div>
+
+    <!-- Corazones y estrellitas flotantes -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 20%; animation-delay: 1s;">💖</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">💗</div>
+    <div class="star" style="left: 50%; animation-delay: 3s;">⭐</div>
+    <div class="star" style="left: 70%; animation-delay: 4s;">🌟</div>
+    <div class="star" style="left: 90%; animation-delay: 5s;">✨</div>
+
+    <script>
+        function unlockMessage() {
+            const input = document.getElementById('nameInput').value;
+            const correctPassword = "Sobi";
+
+            if (input === "") {
+                alert("Por favor, ingresa el apodo.");
+            } else if (input === correctPassword) {
+                document.getElementById('specialMessage').textContent =
+                    "Hola mi niña bonita, ¿cómo está eso de que no soy cursi contigo? Si por ti soy capaz de cualquier cosa, como crear una página para decirte cosas bonitas que disculpa si a veces no te digo en persona. Muchas veces me gana la vergüenza, pero créeme que cambiaré todo esto para que sepas que te amo mucho, tanto como el infinito de los números complejos. Por favor da Enter, mi niña, para que veas lo que tengo preparado para ti.";
+                document.getElementById('message').style.display = "block";
+                document.getElementById('enterButton').style.display = "block"; // Mostrar el botón Enter
+            } else {
+                document.getElementById('specialMessage').textContent =
+                    "Cargando...";
+                document.getElementById('message').style.display = "block";
+                document.getElementById('enterButton').style.display = "none"; // Ocultar el botón Enter
+                setTimeout(() => {
+                    document.getElementById('specialMessage').textContent =
+                        "No no no, así no te llamo corazón. Por favor, intenta de nuevo.";
+                    document.getElementById('nameInput').value = ""; // Limpiar el input
+                }, 2000);
+            }
+        }
+
+        function showFinalMessage() {
+            document.getElementById('finalMessage').style.display = "block";
+            document.getElementById('finalText').innerHTML =
+                "Sabes, no puedo evitar sentirme el chico más afortunado del mundo cada vez que pienso en ti. Desde esos ojos tuyos que brillan como estrellas hasta tu sonrisa que ilumina mi mundo entero. Cada vez que te veo, una sonrisa se dibuja en mi rostro porque sé que tengo a la persona más increíble a mi lado. Amo cada momento contigo, desde nuestras conversaciones más tontas hasta esas miradas que lo dicen todo sin necesidad de palabras. Cada salida contigo es una aventura única, y cada día a tu lado es algo que valoro más de lo que puedo expresar. <br><br>" +
+                "Eres mi mayor fuente de alegría, y no importa cuán difíciles sean las cosas, siempre encuentro paz y felicidad en ti. Tu risa, tus abrazos, y el simple hecho de estar juntos hacen que mi día sea mejor. Quiero que sepas que te amo no solo por lo que eres, sino también por cómo me haces sentir: amado, apoyado y querido. Quizas no soñe en estar con alguien que me haria sentir el amor que hoy en dia siento por ti, pero sin duda eres la coincidencia más linda de mi mundo. <br><br>" +
+                "Cada día que paso contigo me doy cuenta de lo afortunado que soy. No solo por tenerte a mi lado, sino porque contigo el mundo parece más bonito. Eres mi compañera, mi cómplice, y mi mayor alegría. Cuando pienso en el futuro, siempre te veo a ti a mi lado, construyendo juntos sueños, viviendo aventura, me veo realizando un sin fin de cosas contigo. <br><br>" +
+                "Cada salida, cada vez que tengo la oportunidad de verte, se convierte en el mejor momento del día. Eres el motivo por el cual cada mañana me levanto con una sonrisa y por la que cada noche doy gracias. No hay nada en este mundo que cambiaría de ti. Todo lo que eres, todo lo que haces, me hace sentirme la persona más afortunada del universo. <br><br>" +
+		"Recuerdo nuestras primeras salidas, cuando todo era nuevo y emocionante. Cada lugar que visitamos, cada conversación que tuvimos, se ha quedado grabada en mi memoria. Y aunque hemos pasado por momentos difíciles, siempre hemos salido adelante juntos, más fuertes y más unidos. Eres mi roca, mi apoyo incondicional, y aunque suene a cliche, realmente no me imagino mi vida sin y tu sin mi. <br><br>" +
+		"Quiero que sepas que, pase lo que pase, siempre estaré aquí para ti. En los buenos y en los malos momentos, en las alegrías y en las tristezas, siempre podrás contar conmigo. Porque de que me sirve si no puedo ver a mi niña bien, si muchas veces me siento mal por verte mal, lo que más yo deseo es darte el apoyo que necesitas para que estes bien y te des cuenta que realmente me importas, tus problemas son mis problemas y aunque no los pueda entender, te puedo escuchar y si necesitas llorar siempre estara mi hombro, mis brazos, siempre estare para ti mi niña. <br><br>" +
+		"Te amo con todo mi corazón, y lo haré por siempre. Agradezco cada segundo contigo y no puedo esperar para seguir creando más recuerdos juntos. No importa lo que el futuro traiga, lo enfrentaremos juntos, porque mi amor por ti no tiene límites. Mi niña bonita, eres mi todo, y mi mayor sueño es que seas feliz, siempre a mi lado.";
+
+            startCountdown(60); // Aproximadamente un minuto para leer el texto.
+        }
+
+        function startCountdown(seconds) {
+            let timeLeft = seconds;
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                countdownElement.textContent = "Tiempo estimado para leer el mensaje: " + timeLeft + " segundos";
+                timeLeft--;
+
+                if (timeLeft < 0) {
+                    clearInterval(interval);
+                    document.getElementById('exitButton').style.display = "block";
+                }
+            }, 1000);
+        }
+
+        function exitPage() {
+            alert("Te amo");
+            window.close(); // Esto solo funcionará en algunos navegadores.
+        }
+    </script>
+</body>
+</html>
